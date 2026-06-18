@@ -3,6 +3,8 @@ package com.xxl.job.admin.business.model.dto;
 import com.xxl.job.admin.business.model.XxlJobLog;
 import com.xxl.tool.core.DateTool;
 
+import java.util.Date;
+
 public class XxlJobLogDTO {
 
     private long id;
@@ -40,10 +42,10 @@ public class XxlJobLogDTO {
         this.executorParam = xxlJobLog.getExecutorParam();
         this.executorShardingParam = xxlJobLog.getExecutorShardingParam();
         this.executorFailRetryCount = xxlJobLog.getExecutorFailRetryCount();
-        this.triggerTime = DateTool.formatDateTime(xxlJobLog.getTriggerTime());
+        this.triggerTime = formatDateTime(xxlJobLog.getTriggerTime());
         this.triggerCode = xxlJobLog.getTriggerCode();
         this.triggerMsg = xxlJobLog.getTriggerMsg();
-        this.handleTime = DateTool.formatDateTime(xxlJobLog.getHandleTime());
+        this.handleTime = formatDateTime(xxlJobLog.getHandleTime());
         this.handleCode = xxlJobLog.getHandleCode();
         this.handleMsg = xxlJobLog.getHandleMsg();
         this.alarmStatus = xxlJobLog.getAlarmStatus();
@@ -167,6 +169,10 @@ public class XxlJobLogDTO {
 
     public void setAlarmStatus(int alarmStatus) {
         this.alarmStatus = alarmStatus;
+    }
+
+    private static String formatDateTime(Date date) {
+        return date == null ? "" : DateTool.formatDateTime(date);
     }
 
 }
